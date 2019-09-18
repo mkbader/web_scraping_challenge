@@ -4,7 +4,7 @@ import scrape_mars
 
 app = Flask(__name__)
 
-mongo = pymongo(app)
+mongo = Pymongo(app)
 
 @app.route("/")
 
