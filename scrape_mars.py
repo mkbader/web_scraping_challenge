@@ -6,22 +6,23 @@ from splinter import Browser
 from selenium import webdriver
 driver = webdriver.Chrome(executable_path=os.path.abspath("chromedriver.exe"))
 import requests
-import html5lib
+#import html5lib
 import time
-import numpy as np
+#import numpy as np
 import pymongo
+import time 
 
-client = pymongo.MongoClient('mongodb://localhost:27017')
-db = client.mars_db
-collection = db.mars
+#client = pymongo.MongoClient('mongodb://localhost:27017')
+#db = client.mars_db
+#collection = db.mars
 
 
 
 def init_browser():
     browser = Browser("chrome", executable_path=os.path.abspath("chromedriver.exe"), headless=False)
-    return Browser("chrome", headless = False)
+    return browser
 
-def scrape():
+def scrape(collection):
 
     browser = init_browser()
     mars_facts_data = {}
@@ -81,8 +82,8 @@ def scrape():
     table[0]
 
     df_mars_facts = table[0]
-    df_mars_facts.columns = ["Parameter", "Values"]
-    clean_table = df_mars_facts.set_index(["Parameter"])
+    df_mars_facts.columns = ["Mars - Earth Comparison", "Mars", "Earth"]
+    clean_table = df_mars_facts.set_index(["Mars - Earth Comparison"])
     mars_html_table = clean_table.to_html()
     mars_html_table = mars_html_table.replace("\n", "")
     mars_facts_data["mars_facts_table"] = mars_html_table
@@ -94,7 +95,6 @@ def scrape():
     
     hemisphere_base_url = "{0.scheme}://{0.netloc}/".format(urlsplit(hemispheres_url))
     
-    import time 
 
     html = browser.html
     soup = bs(html, "html.parser")
@@ -117,5 +117,5 @@ def scrape():
         
     mars_facts_data["mars_hemisphere"] = mars_hemisphere
   
-    collection.insert(mars_fact_data)
-    #return mars_facts_data
+    #collection.insert(mars_facts_data)
+    return mars_facts_data

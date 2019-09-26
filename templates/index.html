@@ -68,8 +68,8 @@
                             {% endfor %}
                         </div>
                         <div class="col-md-6">
-                            {% for hemisphere in mars.hemisphere_img_url[2:4] %}
-                            
+                            <!--{% for hemisphere in mars.hemisphere_img_url[2:4] %}-->
+                            {% for hemisphere in mars.mars_hemisphere[2:4] %}
                             <img src="{{hemisphere['image url']}}" alt="hemisphere" style="width:50%;">
                             <div class="caption" style="font-weight: bold;">
                                 {{hemisphere['image title']}}
@@ -86,9 +86,9 @@
                 
                 {% endfor %}              
                              
-            </div>
+           <!--</div>-->
             
-        </div>
+        <!--</div>-->
     
 </body>
 </html>
