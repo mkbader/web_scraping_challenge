@@ -16,7 +16,7 @@
                     <h1 align="center">Mission to Mars</h1>
                     
                     <p align="Center">
-                        <a class="btn btn-primary btn-lg" href="#" role="button">Scrape New Data</a>
+                        <a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a>
                     </p>
                 </div>
                 <div class="page-header">
@@ -24,7 +24,7 @@
                 </div>
         </div>  
 
-           {% for data in mars %} 
+        
            <div class="container-fluid">
                     <h2>{{mars.news_title}}</h2>
                     <p>{{mars.news_paragraph}}</p>
@@ -61,20 +61,19 @@
                         <div class="col-md-6">
                             {% for hemisphere in mars.mars_hemisphere[0:2] %}
                             
-                            <img src="{{hemisphere['image url']}}" alt="hemisphere" style="width:50%;">
+                            <img src="{{hemisphere['image_url']}}" alt="hemisphere" style="width:50%;">
                             <div class="caption"style="font-weight: bold;">
-                                {{hemisphere['image title']}}
+                                {{hemisphere['title']}}
                             </div>                                           
                             {% endfor %}
                         </div>
                         <div class="col-md-6">
-                            <!--{% for hemisphere in mars.hemisphere_img_url[2:4] %}-->
                             {% for hemisphere in mars.mars_hemisphere[2:4] %}
-                            <img src="{{hemisphere['image url']}}" alt="hemisphere" style="width:50%;">
+                            <img src="{{hemisphere['image_url']}}" alt="hemisphere" style="width:50%;">
                             <div class="caption" style="font-weight: bold;">
-                                {{hemisphere['image title']}}
+                                {{hemisphere['title']}}
                             </div>                                           
-                            <!--{% endfor %}-->
+                            {% endfor %}
 
 
                         </div>
@@ -83,12 +82,7 @@
 
                 </div>
                 
-                
-                {% endfor %}              
-                             
-           <!--</div>-->
-            
-        <!--</div>-->
+                            
     
 </body>
 </html>

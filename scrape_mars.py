@@ -113,7 +113,7 @@ def scrape(collection):
         soup= bs(html, "html.parser")
         downloads = soup.find("div", class_="downloads")
         image_url = downloads.find("a")["href"]
-        mars_hemisphere.append({"title": title, "img_url": image_url})
+        mars_hemisphere.append({"title": title, "image_url": image_url})
         
     mars_facts_data["mars_hemisphere"] = mars_hemisphere
   
